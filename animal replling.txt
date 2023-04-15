@@ -1,0 +1,56 @@
+
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+const int rs = 12, en = 13, d4 = 11, d5 = 10, d6 = 9, d7 = 8;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+int BUZZER=5;
+int RELAY=3;
+int fire=2;
+
+void setup() 
+{
+  pinMode(RELAY,OUTPUT);
+  pinMode(BUZZER,OUTPUT);
+  digitalWrite(BUZZER,LOW);
+  digitalWrite(RELAY,LOW);
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+  // Print a message to the LCD.
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("  ANIMAL REPLLING ");
+   lcd.setCursor(0,1);
+  lcd.print("   MONITORING...");
+  delay(2000);
+}
+
+void loop() 
+{
+  ANIMAL();
+  
+}
+void ANIMAL()
+{
+  if(Serial.available()>0)
+  {
+    char ch;
+    if ch=='A'
+    {
+      
+      lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("  ANIMAL REPLLING ");
+   lcd.setCursor(0,1);
+  lcd.print("   DETECTED...");
+  delay(2000);  
+      }
+    
+    }
+  
+  
+  
+  }
